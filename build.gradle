@@ -1,0 +1,78 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21-2'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'application'
+    id 'idea'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+group = 'com.kmdev.ranking'
+version = '1.0.0'
+
+dependencies {
+    // kotlin runtime
+    implementation platform('org.jetbrains.kotlin:kotlin-bom')
+    implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
+    implementation('org.jetbrains.kotlin:kotlin-reflect')
+
+    // http4k
+    implementation platform("org.http4k:http4k-bom:$http4kVersion")
+    implementation "org.http4k:http4k-core"
+    implementation "org.http4k:http4k-cloudnative"
+    implementation "org.http4k:http4k-server-netty"
+    implementation "org.http4k:http4k-format-kotlinx-serialization"
+
+    // Logging
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+
+    // Database
+    implementation 'org.postgresql:postgresql:42.2.18'
+    implementation 'com.zaxxer:HikariCP:3.4.5'
+    implementation 'org.jdbi:jdbi3-core:3.18.0'
+    implementation 'org.jdbi:jdbi3-kotlin:3.18.0'
+    implementation 'org.jdbi:jdbi3-kotlin-sqlobject:3.18.0'
+
+    // Test
+    testImplementation "org.http4k:http4k-testing-kotest:$http4kVersion"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+application {
+    mainClass = 'com.kmdev.ranking.AppKt'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+        suppressWarnings = true
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+        suppressWarnings = false
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+    mainClassName = 'com.kmdev.ranking.AppKt'
+    zip64 = true
+    mergeServiceFiles()
+    manifest {
+        attributes 'Implementation-Title': 'ranking-service'
+        attributes 'Multi-Release': 'true'
+        attributes 'Company': 'kmdev'
+    }
+}
+
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
