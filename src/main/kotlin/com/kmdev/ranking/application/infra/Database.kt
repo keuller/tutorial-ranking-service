@@ -21,22 +21,24 @@ object Database {
 
     private fun getSqlLocator() = ClasspathSqlLocator.create()
 
-    fun init() {
-        runCommand {
-            it.createScript(getSql("db.create_table")).execute()
-        }
-    }
-
     private fun getHanaDataSource(): HikariDataSource = HikariConfig().let {
         val codes = UUID.randomUUID().toString().split("-")
         it.jdbcUrl = "jdbc:postgresql://localhost:5432/postgres"
         it.poolName = "company_${codes[0]}_pool"
         it.connectionTestQuery = "SELECT 1"
+        it.username = "postgres"
+        it.password = "postgres"
         it.maximumPoolSize = 10
         it.connectionTimeout = 5_000L
         it.leakDetectionThreshold = 15_000L
 
         HikariDataSource(it)
+    }
+
+    fun check() {
+        runCommand {
+            it.createQuery("select 1 from pg_catalog.pg_type limit 1").mapTo(Int::class.java).first()
+        }
     }
 
     private fun getJdbi(): Jdbi {
