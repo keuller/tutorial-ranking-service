@@ -1,7 +1,7 @@
 package com.kmdev.ranking
 
 import com.kmdev.ranking.application.http.Router
-import com.kmdev.ranking.infra.Database
+import com.kmdev.ranking.application.infra.Database
 import org.http4k.cloudnative.health.Health
 import org.http4k.server.Netty
 import org.http4k.server.asServer
