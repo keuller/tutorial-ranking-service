@@ -1,4 +1,4 @@
-package com.kmdev.ranking.infra
+package com.kmdev.ranking.application.infra
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource

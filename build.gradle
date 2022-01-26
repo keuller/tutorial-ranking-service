@@ -1,7 +1,7 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.21'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'application'
     id 'idea'
 }
@@ -28,14 +28,14 @@ dependencies {
     implementation "org.http4k:http4k-format-kotlinx-serialization"
 
     // Logging
-    implementation "ch.qos.logback:logback-classic:1.2.3"
+    implementation "ch.qos.logback:logback-classic:1.2.10"
 
     // Database
-    implementation 'org.postgresql:postgresql:42.2.18'
-    implementation 'com.zaxxer:HikariCP:3.4.5'
-    implementation 'org.jdbi:jdbi3-core:3.21.0'
-    implementation 'org.jdbi:jdbi3-kotlin:3.21.0'
-    implementation 'org.jdbi:jdbi3-kotlin-sqlobject:3.21.0'
+    implementation 'org.postgresql:postgresql:42.3.0'
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+    implementation 'org.jdbi:jdbi3-core:3.27.0'
+    implementation 'org.jdbi:jdbi3-kotlin:3.27.0'
+    implementation 'org.jdbi:jdbi3-kotlin-sqlobject:3.27.0'
 
     // Test
     testImplementation "org.http4k:http4k-testing-kotest:$http4kVersion"
@@ -49,14 +49,14 @@ application {
 
 compileKotlin {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_11
         suppressWarnings = true
     }
 }
 
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_11
         suppressWarnings = false
     }
 }

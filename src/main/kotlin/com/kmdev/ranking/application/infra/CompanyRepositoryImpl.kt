@@ -5,7 +5,6 @@ import com.kmdev.ranking.business.CompanyRepository
 import com.kmdev.ranking.common.Fail
 import com.kmdev.ranking.common.Result
 import com.kmdev.ranking.common.Success
-import com.kmdev.ranking.infra.Database
 import org.jdbi.v3.core.kotlin.mapTo
 
 class CompanyRepositoryImpl : CompanyRepository {
