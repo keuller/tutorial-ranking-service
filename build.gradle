@@ -1,6 +1,6 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.20'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.20'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'application'
     id 'idea'
@@ -31,11 +31,11 @@ dependencies {
     implementation "ch.qos.logback:logback-classic:1.2.10"
 
     // Database
-    implementation 'org.postgresql:postgresql:42.3.0'
-    implementation 'com.zaxxer:HikariCP:5.0.0'
-    implementation 'org.jdbi:jdbi3-core:3.27.0'
-    implementation 'org.jdbi:jdbi3-kotlin:3.27.0'
-    implementation 'org.jdbi:jdbi3-kotlin-sqlobject:3.27.0'
+    implementation 'org.postgresql:postgresql:42.3.4'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    implementation 'org.jdbi:jdbi3-core:3.28.0'
+    implementation 'org.jdbi:jdbi3-kotlin:3.28.0'
+    implementation 'org.jdbi:jdbi3-kotlin-sqlobject:3.28.0'
 
     // Test
     testImplementation "org.http4k:http4k-testing-kotest:$http4kVersion"

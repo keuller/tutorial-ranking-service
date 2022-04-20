@@ -19,3 +19,13 @@ docker run --name=pgdb --hostname=postgresql \
 ```shell
 ./gradlew run
 ```
+
+## Endpoints
+```
+| Path | Verb | Description      |
+|------|------|------------------|
+| /    | GET  | Default endpoint | 
+| /v1/companies | GET | List all companies |
+| /v1/companies | POST | Register a new company |
+| /v1/companies/vote | PATCH | Apply vote operation |
+```
